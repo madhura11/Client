@@ -26,6 +26,11 @@ public class Client {
         Packet packet = new Packet(p);
         sendPacket(packet);
     }
+    
+    /**
+     * This method selects a packet from text files
+     * @throws Exception 
+     */
     public static void createPacket() throws Exception
     {
         int opt1,i;
@@ -116,6 +121,11 @@ public class Client {
         }
     }
     
+    /**
+     * This method establishes connection with the server and sends the packet 
+     * @param packet Object of class packet
+     * @throws Exception 
+     */
     public static void sendPacket(Packet packet)throws Exception
     {
         Socket ss = new Socket("localhost",6789);
