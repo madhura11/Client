@@ -16,6 +16,7 @@ import java.net.*;
 public class Client {
     static BufferedReader br = null;
     static String p[] = new String[50];
+    static InputStreamReader reader = null;
 
     /**
      * @param args the command line arguments
@@ -35,6 +36,7 @@ public class Client {
     {
         int opt1,i;
         String line,temp;
+        File file;
         Scanner sc = new Scanner(System.in);
         System.out.println("1. Normal Packet");
         System.out.println("2. Attack Packet");
@@ -55,7 +57,8 @@ public class Client {
                 {
                     case 1: 
                         i=0;
-                        br = new BufferedReader(new FileReader("C:\\Users\\phatak\\Documents\\NetBeansProjects\\Client\\src\\client\\DOS.txt"));
+                        file = new File("DOS.txt");
+                        br = new BufferedReader(new FileReader(file.getCanonicalPath()));
                         line = br.readLine();
                         StringTokenizer st1  = new StringTokenizer(line," ",true);
                         while(st1.hasMoreElements())
@@ -71,7 +74,8 @@ public class Client {
                         break;
                     case 2:
                         i=0;
-                        br = new BufferedReader(new FileReader("C:\\Users\\phatak\\Documents\\NetBeansProjects\\Client\\src\\client\\U2R.txt"));
+                        file = new File("U2R.txt");
+                        br = new BufferedReader(new FileReader(file.getCanonicalPath()));
                         line = br.readLine();
                         StringTokenizer st2  = new StringTokenizer(line," ",true);
                         while(st2.hasMoreElements())
@@ -87,7 +91,8 @@ public class Client {
                         break;
                     case 3:
                         i=0;
-                        br = new BufferedReader(new FileReader("C:\\Users\\phatak\\Documents\\NetBeansProjects\\Client\\src\\client\\R2L.txt"));
+                        file = new File("R2L.txt");
+                        br = new BufferedReader(new FileReader(file.getCanonicalPath()));
                         line = br.readLine();
                         StringTokenizer st3  = new StringTokenizer(line," ",true);
                         while(st3.hasMoreElements())
@@ -103,7 +108,8 @@ public class Client {
                         break;
                     case 4:
                         i=0;
-                        br = new BufferedReader(new FileReader("C:\\Users\\phatak\\Documents\\NetBeansProjects\\Client\\src\\client\\Probing.txt"));
+                        file = new File("Probing.txt");
+                        br = new BufferedReader(new FileReader(file.getCanonicalPath()));
                         line = br.readLine();
                         StringTokenizer st4  = new StringTokenizer(line," ",true);
                         while(st4.hasMoreElements())
