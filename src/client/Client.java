@@ -45,6 +45,22 @@ public class Client {
         switch(opt1)
         {
             case 1:
+                i=0;
+                file = new File("normal.txt");
+                br = new BufferedReader(new FileReader(file.getCanonicalPath()));
+                line = br.readLine();
+                StringTokenizer st  = new StringTokenizer(line," ",true);
+                while(st.hasMoreElements())
+                {
+                    temp = st.nextElement().toString();
+                    if(temp.equals(" ")){continue;}
+                    else
+                    {
+                        p[i] = temp;
+                        i++;
+                    }
+                }
+             break;
             case 2:
                 int opt2;
                 System.out.println("1. DOS");
