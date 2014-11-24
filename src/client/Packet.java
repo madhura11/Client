@@ -63,7 +63,7 @@ public class Packet implements Serializable {
  /**
  *Constructor Creates a new Packet object that represents a packet
  */
- Packet(String p[])
+ public Packet(String p[])
    {
     this.duration = Long.parseLong(p[0]);
     this.protocol_type = p[1];
