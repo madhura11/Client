@@ -6,6 +6,7 @@
 
 package client;
 import java.io.*;
+import java.util.*;
 /**
  * This class is used in client part to create a Packet object
  * @author madhura phatak
@@ -19,7 +20,7 @@ public class Packet implements Serializable {
     private long src_bytes;
     private long dst_bytes;
     private int	land;
-    private int	wrong_fragment;
+    private int	wrong_format;
     private int	urgent;
     private int	hot;
     private int	num_failed_logins;
@@ -71,7 +72,7 @@ public class Packet implements Serializable {
     this.src_bytes = Long.parseLong(p[4]);
     this.dst_bytes = Long.parseLong(p[5]);
     this.land = Integer.parseInt(p[6]);
-    this.wrong_fragment = Integer.parseInt(p[7]);
+    this.wrong_format = Integer.parseInt(p[7]);
     this.urgent = Integer.parseInt(p[8]);
     this.hot = Integer.parseInt(p[9]);
     this.num_failed_logins = Integer.parseInt(p[10]);
@@ -114,12 +115,66 @@ public class Packet implements Serializable {
  {
      System.out.println("The packet is");
      System.out.println(this.duration+" "+this.protocol_type+" "+this.service+" "+this.flag+" "+this.src_bytes+" "+this.dst_bytes+" "+this.land+" "+
-                        this.wrong_fragment+" "+this.urgent+" "+this.hot+" "+this.num_failed_logins+" "+this.logged_in+" "+this.num_compromised+" "+
+                        this.wrong_format+" "+this.urgent+" "+this.hot+" "+this.num_failed_logins+" "+this.logged_in+" "+this.num_compromised+" "+
                         this.root_shell+" "+this.su_attempted+" "+this.num_root+" "+this.num_file_creations+" "+this.num_shells+" "+this.num_access_files
                         +" "+this.num_outbound_cmds+" "+this.is_host_login+" "+this.is_guest_login+" "+this.count+" "+this.srv_count+" "+this.serror_rate
                         +" "+this.srv_serror_rate+" "+this.rerror_rate+" "+this.srv_rerror_rate+" "+this.same_srv_rate+" "+this.diff_srv_rate+" "+this.srv_diff_host_rate
                         +" "+this.dst_host_count+" "+this.dst_host_srv_count+" "+this.dst_host_same_srv_rate+" "+this.dst_host_diff_srv_rate+" "+
                         this.dst_host_same_src_port_rate+" "+this.dst_host_srv_diff_host_rate+" "+this.dst_host_serror_rate+" "+this.dst_host_srv_serror_rate
                         +" "+this.dst_host_rerror_rate+" "+this.dst_host_srv_rerror_rate);
+ }
+ 
+ /**
+  * 
+  * @param p is the object of class Packet. p is the packet sent by the client to the server
+  * @return decoded packet in a LinkedList
+  * This method decodes the packet and sends it back to the server
+  */
+ public LinkedList decodePacket()
+ {
+     LinkedList l = new LinkedList();
+     l.add(this.duration);
+     l.add(this.protocol_type);
+     l.add(this.service);
+     l.add(this.flag);
+     l.add(this.src_bytes);
+     l.add(this.dst_bytes);
+     l.add(this.land);
+     l.add(this.wrong_format);
+     l.add(this.urgent);
+     l.add(this.hot);
+     l.add(this.num_failed_logins);
+     l.add(this.logged_in);
+     l.add(this.num_compromised);
+     l.add(this.root_shell);
+     l.add(this.su_attempted);
+     l.add(this.num_root);
+     l.add(this.num_file_creations);
+     l.add(this.num_shells);
+     l.add(this.num_access_files);
+     l.add(this.num_outbound_cmds);
+     l.add(this.is_host_login);
+     l.add(this.is_guest_login);
+     l.add(this.count);
+     l.add(this.srv_count);
+     l.add(this.serror_rate);
+     l.add(this.srv_serror_rate);
+     l.add(this.rerror_rate);
+     l.add(this.srv_rerror_rate);
+     l.add(this.same_srv_rate);
+     l.add(this.diff_srv_rate);
+     l.add(this.srv_diff_host_rate);
+     l.add(this.dst_host_count);
+     l.add(this.dst_host_srv_count);
+     l.add(this.dst_host_same_srv_rate);
+     l.add(this.dst_host_diff_srv_rate);
+     l.add(this.dst_host_same_src_port_rate);
+     l.add(this.dst_host_srv_diff_host_rate);
+     l.add(this.dst_host_serror_rate);
+     l.add(this.dst_host_srv_serror_rate);
+     l.add(this.dst_host_rerror_rate);
+     l.add(this.dst_host_srv_rerror_rate);
+   
+     return l;
  }
 }
